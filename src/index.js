@@ -2,13 +2,12 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const sequelize = require('./models/db');
 const authRoute = require('./routes/auth');
 const personajeRoute = require('./routes/personaje');
 const pelicula_o_serieRoute = require('./routes/pelicula_o_serie');
 const generoRoute = require('./routes/genero');
 const dotenv = require('dotenv');
-
+const connection = require('./connection/connection');
 
 
 
@@ -19,23 +18,8 @@ dotenv.config();
 app.set('port', process.env.PORT || 3000);
 
 //------------------------------CONEXION BBDD------------------------------
-const connection = async () => {
 
-    try {
-        await sequelize.authenticate();
-        console.log('Conexion con BBDD exitosa.');
-        await sequelize.sync();
-
-    } catch (error) {
-        console.error('No se pudo conectar a la BBDD:', error);
-    }
-
-
-}
-
-connection()
-
-
+connection();
 
 //------------------------------MIDDLEWARES------------------------------
 
