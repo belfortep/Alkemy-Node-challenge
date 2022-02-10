@@ -7,12 +7,23 @@ const sequelize = require('../models/db');
 const Op = Sequelize.Op;
 const Genero = require('../models/Genero');
 
+
+/**
+ * @swagger
+ * tags:
+ *  name: Pelicula_o_Serie
+ *  description: Pelicula o Serie endpoints
+ */
+
+
+
 //CREAR PELICULA
 /**
  * @swagger
  * /movies/create:
  *  post:
  *      summary: crea una nueva pelicula
+ *      tags: [Pelicula_o_Serie]
  */
 router.post('/create', verifyToken, async (req, res) => {
     const newPelicula = new Pelicula(req.body);
@@ -30,6 +41,7 @@ router.post('/create', verifyToken, async (req, res) => {
  * /movies/:id:
  *  put:
  *      summary: actualiza una pelicula
+ *      tags: [Pelicula_o_Serie]
  */
 router.put('/:id', verifyToken, async (req, res) => {
     try {
@@ -50,6 +62,7 @@ router.put('/:id', verifyToken, async (req, res) => {
  * /movies/:id:
  *  delete:
  *      summary: elimina una pelicula
+ *      tags: [Pelicula_o_Serie]
  */
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
@@ -73,6 +86,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
  * /movies/:id:
  *  get:
  *      summary: obtiene todos los valores de una pelicula, ademas del nombre de sus personajes asociados y el nombre de sus generos asociados
+ *      tags: [Pelicula_o_Serie]
  */
 router.get('/:id', verifyToken, async (req, res) => {
 
@@ -102,6 +116,7 @@ router.get('/:id', verifyToken, async (req, res) => {
  * /movies:
  *  get:
  *      summary: obtiene un listado de todas las peliculas mostrando imagen, titulo y fecha_creacion.
+ *      tags: [Pelicula_o_Serie]
  */
 router.get('/', verifyToken, async (req, res) => {
 

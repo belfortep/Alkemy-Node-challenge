@@ -10,12 +10,22 @@ const nodemailer = require('nodemailer');
 
 dotenv.config();
 
+/**
+ * @swagger
+ * tags:
+ *  name: Auth
+ *  description: Auth endpoints
+ */
+
+
+
 //REGISTER
 /**
  * @swagger
  * /auth/register:
  *  post:
  *      summary: registro y creacion de usuario
+ *      tags: [Auth]
  */
 router.post('/register', async (req, res) => {
     try {
@@ -70,6 +80,7 @@ router.post('/register', async (req, res) => {
  * /auth/login:
  *  post:
  *      summary: inicio de sesion del usuario
+ *      tags: [Auth]
  */
 router.post("/login", async (req, res) => {
     try {
@@ -95,6 +106,7 @@ router.post("/login", async (req, res) => {
  * /auth:
  *  get:
  *      summary: obtiene los datos de los usuarios 
+ *      tags: [Auth]
  */
 router.get('/', verifyToken, async (req, res) => {
     const users = await User.findAll();
