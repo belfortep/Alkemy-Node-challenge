@@ -3,7 +3,12 @@ const verifyToken = require('../middlewares/authMiddleware');
 const router = require('express').Router();
 
 //CREAR GENERO
-
+/**
+ * @swagger
+ * /genero/create:
+ *  post:
+ *      summary: crea un nuevo genero de pelicula 
+ */
 router.post('/create', verifyToken, async (req, res) => {
     const newGenero = new Genero(req.body);
     try {
@@ -15,7 +20,12 @@ router.post('/create', verifyToken, async (req, res) => {
 })
 
 //UPDATE GENERO
-
+/**
+ * @swagger
+ * /genero/:id:
+ *  put:
+ *      summary: modifica un genero de pelicula
+ */
 router.put('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -30,6 +40,12 @@ router.put('/:id', verifyToken, async (req, res) => {
 })
 
 //DELETE GENERO
+/**
+ * @swagger
+ * /genero/:id:
+ *  delete:
+ *      summary: elimina un genero de pelicula
+ */
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -46,7 +62,12 @@ router.delete('/:id', verifyToken, async (req, res) => {
 
 
 //GET TODOS GENEROS
-
+/**
+ * @swagger
+ * /genero:
+ *  get:
+ *      summary: obtiene todos los generos de las peliculas 
+ */
 router.get('/', verifyToken, async (req, res) => {
     try {
         const generos = await Genero.findAll();

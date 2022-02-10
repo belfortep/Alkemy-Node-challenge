@@ -8,6 +8,10 @@ const pelicula_o_serieRoute = require('./routes/pelicula_o_serie');
 const generoRoute = require('./routes/genero');
 const dotenv = require('dotenv');
 const connection = require('./connection/connection');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+const options = require('./config/config');
+
 
 
 
@@ -16,6 +20,8 @@ const connection = require('./connection/connection');
 dotenv.config();
 
 app.set('port', process.env.PORT || 3000);
+
+const specs = swaggerJSDoc(options)
 
 //------------------------------CONEXION BBDD------------------------------
 
@@ -37,6 +43,7 @@ app.use('/movies', pelicula_o_serieRoute)
 
 app.use('/genero', generoRoute);
 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))
 
 //------------------------------ABRIENDO SERVIDOR------------------------------
 

@@ -8,7 +8,12 @@ const Op = Sequelize.Op;
 const Genero = require('../models/Genero');
 
 //CREAR PELICULA
-
+/**
+ * @swagger
+ * /movies/create:
+ *  post:
+ *      summary: crea una nueva pelicula
+ */
 router.post('/create', verifyToken, async (req, res) => {
     const newPelicula = new Pelicula(req.body);
     try {
@@ -20,7 +25,12 @@ router.post('/create', verifyToken, async (req, res) => {
 })
 
 //UPDATE PELICULA
-
+/**
+ * @swagger
+ * /movies/:id:
+ *  put:
+ *      summary: actualiza una pelicula
+ */
 router.put('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -35,6 +45,12 @@ router.put('/:id', verifyToken, async (req, res) => {
 })
 
 //DELETE PELICULA
+/**
+ * @swagger
+ * /movies/:id:
+ *  delete:
+ *      summary: elimina una pelicula
+ */
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -52,7 +68,12 @@ router.delete('/:id', verifyToken, async (req, res) => {
 
 
 //GET PELICULA DETALLE
-
+/**
+ * @swagger
+ * /movies/:id:
+ *  get:
+ *      summary: obtiene todos los valores de una pelicula, ademas del nombre de sus personajes asociados y el nombre de sus generos asociados
+ */
 router.get('/:id', verifyToken, async (req, res) => {
 
     try {
@@ -76,7 +97,12 @@ router.get('/:id', verifyToken, async (req, res) => {
 
 
 //GET TODAS PELICULAS LISTADO
-
+/**
+ * @swagger
+ * /movies:
+ *  get:
+ *      summary: obtiene un listado de todas las peliculas mostrando imagen, titulo y fecha_creacion.
+ */
 router.get('/', verifyToken, async (req, res) => {
 
     try {

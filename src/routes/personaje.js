@@ -6,7 +6,12 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 //CREAR PERSONAJE
-
+/**
+ * @swagger
+ * /characters/create:
+ *  post:
+ *      summary: crea un nuevo personaje
+ */
 router.post('/create', verifyToken, async (req, res) => {
     const newPersonaje = new Personaje(req.body);
     try {
@@ -18,7 +23,12 @@ router.post('/create', verifyToken, async (req, res) => {
 })
 
 //UPDATE PERSONAJE
-
+/**
+ * @swagger
+ * /characters/:id:
+ *  put:
+ *      summary: modifica a un personaje
+ */
 router.put('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -34,6 +44,12 @@ router.put('/:id', verifyToken, async (req, res) => {
 })
 
 //DELETE PERSONAJE
+/**
+ * @swagger
+ * /characters/:id:
+ *  delete:
+ *      summary: elimina un personaje
+ */
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
 
@@ -51,8 +67,12 @@ router.delete('/:id', verifyToken, async (req, res) => {
 
 
 //GET PERSONAJE DETALLE
-
-
+/**
+ * @swagger
+ * /characters/:id:
+ *  get:
+ *      summary: obtiene el detalle de un personaje junto a sus peliculas asociadas
+ */
 router.get('/:id', verifyToken, async (req, res) => {
 
     try {
@@ -74,7 +94,12 @@ router.get('/:id', verifyToken, async (req, res) => {
 
 
 //GET TODOS PERSONAJES LISTADO
-
+/**
+ * @swagger
+ * /characters:
+ *  get:
+ *      summary: obtiene un listado de todos los personajes con las propiedades nombre e imagen
+ */
 router.get('/', verifyToken, async (req, res) => {
 
     try {

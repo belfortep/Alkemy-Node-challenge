@@ -9,7 +9,14 @@ const localStorage = new LocalStorage('./scratch')
 const nodemailer = require('nodemailer');
 
 dotenv.config();
+
 //REGISTER
+/**
+ * @swagger
+ * /auth/register:
+ *  post:
+ *      summary: registro y creacion de usuario
+ */
 router.post('/register', async (req, res) => {
     try {
         //HASH DE LA PASSWORD
@@ -58,6 +65,12 @@ router.post('/register', async (req, res) => {
 });
 
 //LOGIN
+/**
+ * @swagger
+ * /auth/login:
+ *  post:
+ *      summary: inicio de sesion del usuario
+ */
 router.post("/login", async (req, res) => {
     try {
 
@@ -77,6 +90,12 @@ router.post("/login", async (req, res) => {
 
 
 //GET USUARIOS
+/**
+ * @swagger
+ * /auth:
+ *  get:
+ *      summary: obtiene los datos de los usuarios 
+ */
 router.get('/', verifyToken, async (req, res) => {
     const users = await User.findAll();
     res.json(users);
